@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar><mat-icon>business</mat-icon>&nbsp;ABC</mat-toolbar>
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <a mat-list-item [routerLink]="['/dashboard']"><mat-icon>dashboard</mat-icon>&nbsp;Dashboard</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item [matMenuTriggerFor]="templateMenu"><mat-icon>folder</mat-icon>&nbsp;Content Manager</a>
+      <mat-menu #templateMenu="matMenu">
+        <a mat-menu-item [routerLink]="['/editor']"><mat-icon>create</mat-icon>&nbsp;New Template</a><mat-divider></mat-divider>
+        <a mat-menu-item [routerLink]="['/form']"><mat-icon>border_color</mat-icon>&nbsp;Manage Template</a><mat-divider></mat-divider>
+        <a mat-menu-item [routerLink]="['/table']"><mat-icon>build</mat-icon>&nbsp;Manage Dynamic Field</a><mat-divider></mat-divider>
+        <a mat-menu-item [routerLink]="['/dragndrop']"><mat-icon>library_books</mat-icon>&nbsp;Manage Category</a><mat-divider></mat-divider>
+      </mat-menu>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>angular-dash-prj</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+    <!--<app-dash-comp></app-dash-comp>-->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

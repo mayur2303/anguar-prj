@@ -1,0 +1,63 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Template</h1>
+
+
+    <mat-grid-list [cols]="2" rowHeight="2:1" gutterSize="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            List
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+            <ejs-listbox  id="listbox" [dataSource]='data'>
+            </ejs-listbox>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Template
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+
+            <ejs-tab id="element">
+              <e-tabitems>
+                <e-tabitem>
+                  <ng-template #headerText>
+                    <div><mat-icon>email</mat-icon>&nbsp;Email</div>
+                  </ng-template>
+                  <ng-template #content>
+                    <ejs-richtexteditor #RTE id='defaultRTE' (created)='onCreateEmail()'></ejs-richtexteditor>
+                  </ng-template>
+                </e-tabitem>
+                <e-tabitem>
+                  <ng-template #headerText>
+                    <div><mat-icon>textsms</mat-icon>&nbsp;SMS</div>
+                  </ng-template>
+                  <ng-template #content>
+                    <ejs-richtexteditor #RTE1 id='RTESms' (created)='onCreateSms()'></ejs-richtexteditor>
+                  </ng-template>
+                </e-tabitem>
+                <e-tabitem>
+                  <ng-template #headerText>
+                    <div><mat-icon>notifications</mat-icon>&nbsp;Push</div>
+                  </ng-template>
+                  <ng-template #content>
+                    <ejs-richtexteditor #RTE2 id='RTEPush' (created)='onCreatePush()'></ejs-richtexteditor>
+                  </ng-template>
+                </e-tabitem>
+              </e-tabitems>
+            </ejs-tab>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
